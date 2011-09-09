@@ -1,0 +1,38 @@
+# Apache configuration file
+# http://httpd.apache.org/docs/2.2/mod/quickreference.html
+
+# Note .htaccess files are an overhead, this logic should be in your Apache
+# config whenever possible.
+# http://httpd.apache.org/docs/2.2/howto/htaccess.html
+
+# ------------------------------------------------------------------------------
+# Start rewrite engine
+# ------------------------------------------------------------------------------
+
+# Turning on the rewrite engine is necessary for the following rules and
+# features. "+FollowSymLinks" must be enabled for this to work.
+
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	RewriteEngine On
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# Atom
+# ------------------------------------------------------------------------------
+
+# Checks to see if the user is attempting to access a valid file, such as asset.
+# If this isn't true, it send the request to index.php for handling.
+
+<IfModule mod_rewrite.c>
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+
+# If we don't have mod_rewrite installed, all 404's can be sent to the index.php
+# and everything behaves as normal.
+
+<IfModule !mod_rewrite.c>
+	ErrorDocument 404 /index.php
+</IfModule>
