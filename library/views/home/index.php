@@ -20,5 +20,5 @@
 <ul>
 	<li><a href="http://atomphp.com">Official Website</a></li>
 	<li><a href="http://atomphp.com/docs">Online Documentation</a></li>
-	<li><a href="http://github.com/syntaqx/atom">Github Repository</a></li>
+	<li><a href="http://github.com/atomphp/atom">Github Repository</a></li>
 </ul>
