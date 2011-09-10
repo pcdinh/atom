@@ -37,7 +37,7 @@ class Request extends Basic {
 	{
 		is_null($response) and $response = $response = Response::make();
 
-		if(!($method = Config::get('errors.http_error')) or !is_callable($method))
+		if(!($method = Config::get('error.http_error')) or !is_callable($method))
 		{
 			throw new Exception\Basic('An http %d was encountered, but not callback method exists. Please update your `http_error` value in your errors config.', $code);
 		}
