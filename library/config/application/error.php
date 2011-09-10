@@ -49,7 +49,7 @@ return array(
 	 *
 	 * @var    mixed
 	 */
-	'http_error' => function($code, $message)
+	'http_handler' => function($code, $message)
 	{
 		$titles = array('Aw, crap!', 'Bloody Hell!', 'Uh Oh!', 'Nope, not here.', 'Huh?');
 

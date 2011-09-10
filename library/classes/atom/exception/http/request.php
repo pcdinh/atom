@@ -35,14 +35,14 @@ class Request extends Basic {
 	 */
 	public function __construct($code = 404, Response $response = null)
 	{
-		is_null($response) and $response = $response = Response::make();
-
-		if(!($method = Config::get('error.http_error')) or !is_callable($method))
+		if($code < 400)
 		{
-			throw new Exception\Basic('An http %d was encountered, but not callback method exists. Please update your `http_error` value in your errors config.', $code);
+			throw new Exception\Basic('An invalid call to Atom\\Exception\\Http\\Request was thrown. This exception is meant to handle HTTP errors.');
 		}
 
-		$response->set_status($code)->body(call_user_func($method, $code, Http::$statuses[$code]))->send();
+		is_null($response) and $response = $response = Response::make();
+
+		$response->set_status($code)->body(call_user_func(Config::get('error.http_handler'), $code, Http::$statuses[$code]))->send();
 
 		exit;
 	}
