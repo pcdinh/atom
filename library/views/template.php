@@ -18,7 +18,7 @@
 		#main h2,h3 { border-bottom: 1px dashed #d0d0d0; margin: 15px 0; padding:0 0 8px }
 		#main h3 { font-size: 18px }
 		#main p { margin: 10px 0 }
-		#main pre { background-color: #f0f0f0; border-left: 1px solid #d8d8d8; border-top: 1px solid #d8d8d8; padding: 10px; text-shadow: 0 1px 0 #fff }
+		#main pre { background-color: #f0f0f0; overflow-x: scroll; border-left: 1px solid #d8d8d8; border-top: 1px solid #d8d8d8; padding: 10px; text-shadow: 0 1px 0 #fff }
 		#main ul { margin: 10px 0; padding: 0 30px }
 		#main li { margin:5px 0 }
 		#footer { color: #888; font-size: 12px; margin: 20px auto; text-align: center; text-shadow: 0 1px 0 #fff; width:780px}
