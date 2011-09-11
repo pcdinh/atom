@@ -65,6 +65,16 @@ class Input implements Design\Invokable {
 	}
 
 	/**
+	 * Return's the input method used (GET, POST, DELETE, etc..)
+	 *
+	 * @return   string          The input method used for this request
+	 */
+	public static function method()
+	{
+		return static::server('REQUEST_METHOD', 'GET');
+	}
+
+	/**
 	 * Fetch an item from the php://input for put arguments
 	 *
 	 * @param    string          The index key
