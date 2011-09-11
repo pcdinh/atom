@@ -11,9 +11,6 @@
  */
 namespace Atom;
 
-// Aliasing rules
-use Atom\Arr;
-
 /**
  * Provides methods for working with URL objects
  *

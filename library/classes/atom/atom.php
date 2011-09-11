@@ -12,9 +12,7 @@
 namespace Atom;
 
 // Aliasing rules
-use Atom\Config;
 use Atom\Http\Response;
-use Atom\Uri;
 
 /**
  * @package    Atom

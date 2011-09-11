@@ -23,40 +23,11 @@ use Atom\Exception;
 class Loader {
 
 	/**
-	 * Default separator for classes, this is commonly '_' for non-namespaced
-	 * code, and '\\' for namespaced.
-	 *
-	 * @var    string
-	 */
-	public static $separator = '\\';
-
-	/**
 	 * Class aliases
 	 *
 	 * @var    array
 	 */
 	public static $aliases = array();
-
-	/**
-	 * Default root to load from, defaults to the classes path.
-	 *
-	 * @var    string
-	 */
-	public static $root = \CLASS_PATH;
-
-	/**
-	 * Bootstrap's the autoloader by adding itself to the SPL autoload stack, as
-	 * well as loading in useful configurations.
-	 *
-	 * @see       http://php.net/spl_autoload_register
-	 * @return    void             No value is returned
-	 */
-	public static function bootstrap()
-	{
-		\spl_autoload_register('Atom\Loader::load', true, true);
-
-		static::$aliases = (array) Config::get('aliases', array());
-	}
 
 	/**
 	 * Normalize a class name into a path
@@ -66,14 +37,14 @@ class Loader {
 	 */
 	public static function get_normalized_path($name)
 	{
-		if(\strpos($name, static::$separator) !== false)
+		if(\strpos($name, '\\') !== false)
 		{
-			$name = \str_replace(static::$separator, '/', $name);
+			$name = \str_replace('\\', '/', $name);
 		}
 
 		$path = \strtolower(\trim($name));
 
-		return static::$root.$path.EXT;
+		return \CLASS_PATH.$path.EXT;
 	}
 
 	/**
