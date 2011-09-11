@@ -15,18 +15,24 @@
  * @var    array
  */
 return array(
-	'Arr' => 'Atom\\Arr',
-	'Asset' => 'Atom\\Asset',
-	'Benchmark' => 'Atom\\Benchmark',
-	'Cache' => 'Atom\\Cache',
+	'Arr'        => 'Atom\\Arr',
+	'Asset'      => 'Atom\\Asset',
+	'Benchmark'  => 'Atom\\Benchmark',
+	'Cache'      => 'Atom\\Cache',
 	'Controller' => 'Atom\\MVC\\Controller',
-	'Config' => 'Atom\\Config',
-	'Exception' => 'Atom\\Exception',
-	'Http' => 'Atom\\Http',
-	'Loader' => 'Atom\\Loader',
-	'Url' => 'Atom\\Url',
-	'Version' => 'Atom\\Version',
-	'View' => 'Atom\\View',
+	'Config'     => 'Atom\\Config',
+	'DB'         => 'Atom\\DB',
+	'Eloquent'   => 'Atom\\DB\\Eloquent\\Model',
+	'Exception'  => 'Atom\\Exception',
+	'Http'       => 'Atom\\Http',
+	'Inflector'  => 'Atom\\Inflector',
+	'Invokable'  => 'Atom\\Design\\Invokable',
+	'Loader'     => 'Atom\\Loader',
+	'Renderable' => 'Atom\\Design\\Renderable',
+	'Str'        => 'Atom\\Str',
+	'Url'        => 'Atom\\Url',
+	'Version'    => 'Atom\\Version',
+	'View'       => 'Atom\\View',
 );
 
 /* End of file aliases.php */

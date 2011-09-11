@@ -35,6 +35,16 @@ return array(
 	'index' => 'index.php',
 
 	/**
+	 * Application environment.
+	 *
+	 * This value is used for environmentally configurable values, such as
+	 * database connectivity.
+	 *
+	 * @var     string
+	 */
+	'environment' => 'development',
+
+	/**
 	 * The default timezone of your application. This timezone will be used
 	 * when Atom needs to generate a date, such as when writing to a log file.
 	 *
@@ -48,6 +58,13 @@ return array(
 	 * @var     string
 	 */
 	'timezone' => 'UTC',
+
+	/**
+	 * The default character encoding.
+	 *
+	 * @var     string
+	 */
+	'encoding' => 'UTF-8',
 
 );
 
