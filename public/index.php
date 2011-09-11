@@ -7,11 +7,6 @@
  * @link       http://atomphp.com
  */
 
-// Aliasing rules
-use Atom\Atom;
-use Atom\Benchmark;
-use Atom\Version;
-
 // Cache the starting time and memory usage for future benchmarking
 define('ATOM_START_TIME', microtime(true));
 define('ATOM_START_MEM', memory_get_usage());
@@ -57,7 +52,7 @@ define('TMP_PATH',     STORAGE_PATH.'tmp/');
 require LIBRARY_PATH.'bootstrap'.EXT;
 
 // Dispatch routing
-$response = Atom::dispatch();
+$response = Atom\Atom::dispatch();
 
 // Give a bit of love to the Atom dev team?
 // Remove this if you don't feel the need to acknowledge all the effort we've

@@ -33,14 +33,14 @@ class Arr {
 	 */
 	public static function get($array, $key, $default = null)
 	{
-		if(\is_null($key))
+		if($key === null)
 		{
 			return $array;
 		}
 
 		foreach(\explode('.', $key) as $segment)
 		{
-			if(!\is_array($array) or !\array_key_exists($segment, $array))
+			if(!\is_array($array) or !isset($array[$segment]))
 			{
 				return \is_callable($default) ? \call_user_func($default) : $default;
 			}
@@ -69,7 +69,7 @@ class Arr {
 	 */
 	public static function set(&$array, $key, $value)
 	{
-		if(\is_null($key))
+		if($key === null)
 		{
 			return $array = $value;
 		}

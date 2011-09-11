@@ -30,7 +30,7 @@ return array(
 
 		$response = \Atom\Http\Response::make(null, 500);
 
-		$response->body(View::make('template')->partial('content', 'error/fatal', array('title' => 'An error has occured!', 'e' => $e)));
+		$response->body(View::make('template')->partial('content', 'error/fatal', array('title' => 'An error has occured!', 'e' => $e, 'content' => $content)));
 
 		$response->send();
 

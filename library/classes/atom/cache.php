@@ -30,6 +30,17 @@ class Cache {
 	public static $drivers = array();
 
 	/**
+	 * Pass all other methods to the default driver.
+	 *
+	 * Passing method calls to the driver instance provides a better API for you.
+	 * For instance, instead of saying Cache::driver()->foo(), you can just say Cache::foo().
+	 */
+	public static function __callStatic($method, $parameters)
+	{
+		return call_user_func_array(array(static::driver(), $method), $parameters);
+	}
+
+	/**
 	 * Get a cache driver instance.
 	 *
 	 * If no driver name is specified, the default cache driver will be returned
@@ -112,17 +123,6 @@ class Cache {
 		static::driver($driver)->set($key, $default, $minutes);
 
 		return $default;
-	}
-
-	/**
-	 * Pass all other methods to the default driver.
-	 *
-	 * Passing method calls to the driver instance provides a better API for you.
-	 * For instance, instead of saying Cache::driver()->foo(), you can just say Cache::foo().
-	 */
-	public static function __callStatic($method, $parameters)
-	{
-		return call_user_func_array(array(static::driver(), $method), $parameters);
 	}
 }
 
