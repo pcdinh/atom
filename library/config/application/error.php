@@ -30,8 +30,7 @@ return array(
 
 		$response = \Atom\Http\Response::make(null, 500);
 
-		$response->body(View::make('template')->partial('content', 'error/fatal', array('title' => 'An error has occured!', 'e' => $e, 'content' => $content)));
-
+		$response->body(View::make('error/fatal', array('title' => 'An error has occured!', 'e' => $e, 'content' => $content)));
 		$response->send();
 
 		exit(ob_get_clean());
@@ -54,8 +53,7 @@ return array(
 	'http_handler' => function($code, $message)
 	{
 		$titles = array('Aw, crap!', 'Bloody Hell!', 'Uh Oh!', 'Nope, not here.', 'Huh?');
-
-		return View::make('template')->partial('content', 'error/http', array('title' => $titles[array_rand($titles)], 'code' => $code, 'message' => $message));
+		return View::make('error/http', array('title' => $titles[array_rand($titles)], 'code' => $code, 'message' => $message));
 	},
 
 );

@@ -66,6 +66,17 @@ return array(
 	 */
 	'encoding' => 'UTF-8',
 
+	/**
+	 * Application key
+	 *
+	 * Your application key should be a 32 character string that is totally
+	 * random and secret. This key is used by the encryption class to generate
+	 * secure, encrypted strings.
+	 *
+	 * @var    string
+	 */
+	'key' => '',
+
 );
 
 /* End of file application.php */

@@ -26,7 +26,7 @@ class Home extends \Controller {
 	 */
 	public function action_index()
 	{
-		$this->response->body = \View::make('template')->partial('content', 'home/index');
+		$this->response->body = \View::make('home/index');
 	}
 }
 
