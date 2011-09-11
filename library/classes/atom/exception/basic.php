@@ -18,7 +18,6 @@ namespace Atom\Exception;
  * @subpackage Library
  */
 class Basic extends \Atom\Exception {
-
 }
 
 /* End of file basic.php */
