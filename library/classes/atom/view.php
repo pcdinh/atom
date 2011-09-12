@@ -12,8 +12,11 @@
 namespace Atom;
 
 /**
+ * View class
+ *
  * View class, this class serves as an object oriented way of handling display
- * data, mainly designed for use with MVC-like applications.
+ * data, mainly designed for use with MVC-like applications. Variables can be
+ * assigned with the view object and referenced locally within the views.
  *
  * @package    Atom
  * @subpackage Library
@@ -32,7 +35,7 @@ class View implements Design\Renderable {
 	 *
 	 * @see       $this->__construct()
 	 */
-	public static function make($view, $data = array(), $path = VIEW_PATH)
+	public static function make($view, $data = array(), $path = \VIEW_PATH)
 	{
 		return new static($view, $data, $path);
 	}
