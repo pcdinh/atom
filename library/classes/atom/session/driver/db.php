@@ -88,7 +88,7 @@ class DB implements Driver, Sweeper {
 	 */
 	private function table()
 	{
-		return \System\DB::connection()->table(Config::get('session.table'));		
+		return \Atom\DB::connection()->table(Config::get('session.table'));
 	}
 }
 

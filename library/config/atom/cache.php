@@ -49,7 +49,21 @@ return array(
 			'host' => '127.0.0.1',
 			'port' => 11211,
 			'weight' => 100,
-		)
+		),
+	),
+
+	/**
+	 * Redis servers
+	 *
+	 * The redis servers used by your application
+	 *
+	 * @var    array
+	 */
+	'redis_servers' => array(
+		'default' => array(
+			'hostname'	=> '127.0.0.1',
+			'port'		=> 6379,
+		),
 	),
 
 );

@@ -30,7 +30,7 @@ class Memcached implements Driver {
 	 */
 	public function load($id)
 	{
-		return Cache::driver('memcached')->get($id);
+		return Cache::driver('memcached')->get('session_'.$id);
 	}
 
 	/**
@@ -41,7 +41,7 @@ class Memcached implements Driver {
 	 */
 	public function save($session)
 	{
-		Cache::driver('memcached')->put($session['id'], $session, Config::get('session.lifetime'));
+		Cache::driver('memcached')->set('session_'.$session['id'], $session, Config::get('session.lifetime'));
 	}
 
 	/**
@@ -52,7 +52,7 @@ class Memcached implements Driver {
 	 */
 	public function delete($id)
 	{
-		Cache::driver('memcached')->forget($id);
+		Cache::driver('memcached')->forget('session_'.$id);
 	}
 }
 

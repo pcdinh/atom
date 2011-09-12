@@ -12,6 +12,7 @@
 namespace Atom\Session\Driver;
 
 // Aliasing rules
+use Atom\Cookie;
 use Atom\Config;
 use Atom\Crypt;
 
@@ -35,11 +36,11 @@ class Cookie implements Driver {
 	 */
 	public function __construct()
 	{
-		$this->crypt = new Crypt;
+		$this->crypt = Crypt::make();
 
 		if(Config::get('application.key') == '')
 		{
-			throw new \Exception("You must set an application key before using the Cookie session driver.");
+			throw new Exception\Basic('You must set an application key before using the Cookie session driver.');
 		}
 	}
 
@@ -51,9 +52,9 @@ class Cookie implements Driver {
 	 */
 	public function load($id)
 	{
-		if(\System\Cookie::has('session_payload'))
+		if(Cookie::has('session_payload'))
 		{
-			return unserialize($this->crypt->decrypt(\System\Cookie::get('session_payload')));
+			return unserialize($this->crypt->decrypt(Cookie::get('session_payload')));
 		}
 	}
 
@@ -68,10 +69,7 @@ class Cookie implements Driver {
 		if(!headers_sent())
 		{
 			extract(Config::get('session'));
-
-			$payload = $this->crypt->encrypt(serialize($session));
-
-			\System\Cookie::set('session_payload', $payload, $lifetime, $path, $domain, $https, $http_only);
+			Cookie::set('session_payload', $this->crypt->encrypt(serialize($session)), $lifetime, $path, $domain, $https, $http_only);
 		}
 	}
 
@@ -83,7 +81,7 @@ class Cookie implements Driver {
 	 */
 	public function delete($id)
 	{
-		\System\Cookie::forget('session_payload');
+		Cookie::forget('session_payload');
 	}
 }
 

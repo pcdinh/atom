@@ -14,12 +14,15 @@ namespace Atom\Session\Driver;
 // Aliasing rules
 use Atom\Cache;
 use Atom\Config;
+use Atom\Session;
 
 /**
+ * Redis session driver
+ *
  * @package    Atom
  * @subpackage Library
  */
-class APC implements Driver {
+class Redis implements Driver {
 
 	/**
 	 * Load a session by ID.
@@ -29,18 +32,18 @@ class APC implements Driver {
 	 */
 	public function load($id)
 	{
-		return Cache::driver('apc')->get($id);
+		return Cache::driver('redis')->get('session_'.$id);
 	}
 
 	/**
 	 * Save a session.
 	 *
-	 * @param    array
+	 * @param    array  $session
 	 * @return   void             No value is returned
 	 */
 	public function save($session)
 	{
-		Cache::driver('apc')->set($session['id'], $session, Config::get('session.lifetime'));
+		Cache::driver('redis')->set('session_'.$session['id'], $session, Config::get('session.lifetime'));
 	}
 
 	/**
@@ -51,8 +54,8 @@ class APC implements Driver {
 	 */
 	public function delete($id)
 	{
-		Cache::driver('apc')->forget($id);
+		Cache::driver('redis')->forget('session_'.$id);
 	}
 }
 
-/* End of file apc.php */
+/* End of file redis.php */
