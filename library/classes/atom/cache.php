@@ -72,6 +72,11 @@ class Cache {
 					return static::$drivers[$driver] = new Cache\Driver\APC;
 				}
 				break;
+				case 'redis':
+				{
+					return static::$drivers[$driver] = new Cache\Driver\Redis;
+				}
+				break;
 				default:
 				{
 					throw new Exception\Basic('Cache driver [%s] is not supported.', $driver);
