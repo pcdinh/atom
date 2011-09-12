@@ -11,6 +11,9 @@
 namespace Atom\Cache;
 
 /**
+ * Interface for all required methods for cache drivers. All Cache divers must
+ * implement this method to comply with the driver access layer.
+ *
  * @package    Atom
  * @subpackage Library
  */
