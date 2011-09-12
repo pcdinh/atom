@@ -28,10 +28,8 @@ class Atom {
 	 *
 	 * @return   \Http\Response
 	 */
-	public static function dispatch()
+	public static function dispatch(Url $url)
 	{
-		$url = Url::current();
-
 		$default = Config::get('routes._default_');
 		$default = explode('/', $default);
 
@@ -76,17 +74,14 @@ class Atom {
 			throw new Exception\Http\Request(404, $response);
 		}
 
-		if(method_exists($controller, 'before'))
+		if(!$controller instanceof MVC\Controller)
 		{
-			$controller->before();
+			throw new Exception\Basic('Corrupt application controller. Controller does not implement the driver specification.');
 		}
 
+		$controller->before();
 		$controller->{$action}();
-
-		if(method_exists($controller, 'after'))
-		{
-			$controller->after();
-		}
+		$controller->after();
 
 		return $response;
 	}

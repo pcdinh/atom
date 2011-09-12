@@ -52,7 +52,7 @@ define('TMP_PATH',     STORAGE_PATH.'tmp/');
 require LIBRARY_PATH.'bootstrap'.EXT;
 
 // Dispatch routing
-$response = Atom\Atom::dispatch();
+$response = Atom\Atom::dispatch(Url::current());
 
 // Give a bit of love to the Atom dev team?
 // Remove this if you don't feel the need to acknowledge all the effort we've

@@ -189,7 +189,6 @@ class Redis {
 				}
 			}
 			break;
-
 			// Integer Reply
 			case ':':
 			{

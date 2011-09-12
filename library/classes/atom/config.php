@@ -116,6 +116,20 @@ class Config implements Design\Invokable {
 	}
 
 	/**
+	 * Save configuration values changes to their configuration file
+	 *
+	 * [!!] This method is currently undeveloped, and will be developed as time
+	 *      permits
+	 *
+	 * @param    string           The configuration file name
+	 * @param    string|array	  A new set of configuration data, or the items key name from the config $item's
+	 * @return   boolean          Returns true if the config file was successfully created, otherwise false.
+	 */
+	public static function save($file, $config)
+	{
+	}
+
+	/**
 	 * Parse a configuration key.
 	 *
 	 * The value on the left side of the dot is the configuration file
