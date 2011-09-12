@@ -26,6 +26,19 @@ class Crypt {
 	}
 
 	/**
+	 * Magic Method for calling class methods statically, using default
+	 * configurations
+	 *
+	 * @param    string
+	 * @param    array
+	 * @return   mixed
+	 */
+	public static function __callStatic($method, $parameters)
+	{
+		return static::make()->$method($parameters);
+	}
+
+	/**
 	 * The encryption cipher.
 	 *
 	 * @var    string

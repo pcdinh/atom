@@ -61,8 +61,8 @@ return array(
 	 */
 	'redis_servers' => array(
 		'default' => array(
-			'hostname'	=> '127.0.0.1',
-			'port'		=> 6379,
+			'hostname' => '127.0.0.1',
+			'port' => 6379,
 		),
 	),
 

@@ -23,21 +23,12 @@ use Atom\Crypt;
 class Cookie implements Driver {
 
 	/**
-	 * The Crypt instance.
-	 *
-	 * @var    Crypt
-	 */
-	private $crypt;
-
-	/**
 	 * Create a new Cookie session driver instance.
 	 *
 	 * @return   void             No value is returned
 	 */
 	public function __construct()
 	{
-		$this->crypt = Crypt::make();
-
 		if(Config::get('application.key') == '')
 		{
 			throw new Exception\Basic('You must set an application key before using the Cookie session driver.');
@@ -54,7 +45,7 @@ class Cookie implements Driver {
 	{
 		if(Cookie::has('session_payload'))
 		{
-			return unserialize($this->crypt->decrypt(Cookie::get('session_payload')));
+			return unserialize(Crypt::decrypt(Cookie::get('session_payload')));
 		}
 	}
 
@@ -69,7 +60,7 @@ class Cookie implements Driver {
 		if(!headers_sent())
 		{
 			extract(Config::get('session'));
-			Cookie::set('session_payload', $this->crypt->encrypt(serialize($session)), $lifetime, $path, $domain, $https, $http_only);
+			Cookie::set('session_payload', Crypt::encrypt(serialize($session)), $lifetime, $path, $domain, $https, $http_only);
 		}
 	}
 
